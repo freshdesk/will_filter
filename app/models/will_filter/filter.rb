@@ -705,7 +705,7 @@ module WillFilter
           end
         end
   
-        WillFilter::Filter.find(:all, :conditions => conditions)
+        WillFilter::Filter.where(conditions)
       end
     end
 
@@ -890,7 +890,7 @@ module WillFilter
           recs = Kaminari.paginate_array(recs)
         end  
 
-        recs = recs.page(page).per(per_page)
+        recs = recs.page(page).per(per_page).to_a
         recs.wf_filter = self
         recs
       end

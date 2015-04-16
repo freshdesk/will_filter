@@ -90,7 +90,7 @@ Wf.Effects = {
 
 Wf.Filter = function(options){
 	var self = this;
-  this.original_form_action = null;
+  this.original_form_action = "";
 }
 
 Wf.Filter.prototype = {
@@ -165,7 +165,7 @@ Wf.Filter.prototype = {
 		this.updateFilterConditions('add_condition', data_hash);
   },
 	updateFilterConditions: function(action, data_hash) {
-    Wf.Utils.update('wf_filter_conditions', '/will_filter/filter/' + action, {
+    Wf.Utils.update('wf_filter_conditions', 'will_filter/filter/' + action, {
       parameters: data_hash,
       evalScripts: true,
       onComplete: function(transport) {
