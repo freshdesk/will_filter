@@ -887,10 +887,10 @@ module WillFilter
 
         if custom_conditions?
           recs = process_custom_conditions(recs.all)
-          recs = Kaminari.paginate_array(recs)
+          recs = Kaminari.paginate(:page => page, :per_page => per_page).to_a
         end  
 
-        recs = recs.page(page).per(per_page).to_a
+        recs = recs.paginate(:page => page, :per_page => per_page).to_a
         recs.wf_filter = self
         recs
       end
